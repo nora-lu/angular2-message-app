@@ -79,3 +79,6 @@ mongod
 *.ntvs*
 *.njsproj
 *.sln
+
+# Generated bundle file by webpack
+public/js/app/bundle.js
