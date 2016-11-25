@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Message } from "./message.model";
+import { MessageService } from "./message.service";
 
 @Component({
     selector: 'app-message',
@@ -26,7 +27,13 @@ export class MessageComponent {
     @Input() message: Message;  // @Input('alias') allows passing data from parent to child
     @Output() editClicked = new EventEmitter<string>();  // @Output() allows passing data from child to parent and makes the event to be listened from outside
 
+    constructor(private messageService: MessageService) {}
+
     onEdit() {
         this.editClicked.emit('A new value');
+    }
+
+    onDelete() {
+        this.messageService.deleteMessage(this.message);
     }
 }
